@@ -38,6 +38,13 @@ class ResturantController extends Controller
      */
     public function store(Request $request)
     {
+        //validating form before storing into database
+        $request -> validate([
+            'name'=>'required',
+            'table_num' => 'required | min:2 | max:2',
+            'order' => 'required'
+        ]);
+        
         $order = array(
              'name' => $request->name,
              'table_num' => $request->table_num,
@@ -78,6 +85,13 @@ class ResturantController extends Controller
      */
     public function update(Request $request)
     {
+        //validating form before updating into database
+        $request -> validate([
+            'name'=>'required',
+            'table_num' => 'required | min:2 | max:2',
+            'order' => 'required'
+        ]);
+
         $order = array(
             'name' => $request->name,
             'table_num' => $request->table_num,

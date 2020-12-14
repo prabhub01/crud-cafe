@@ -42,6 +42,14 @@
             <p style="padding:1%;">{{$message}}</p>
         </div>
     @endif
+          
+      <!-- displaying validating information -->
+  <div class="alert-danger">
+            @foreach($errors->all() as $e)
+            <p style="padding:10px 0 0 30px;">{{$e}}</p>
+            @endforeach
+  </div>
+
 
      <table class="table table-bordered">
         <thead>
@@ -100,6 +108,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+ 
       <div class="modal-body">
         <form action="{{route('resturant.store')}}" method="POST">
         @csrf
